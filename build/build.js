@@ -12,7 +12,8 @@ var async = require("async");
 var apiServer="https://api.tinkercad.com";
 
 // the location where the disconnected pacakge is stored to.
-var dest = path.resolve(__dirname, "tmp");
+var version="5";
+var dest = path.resolve(__dirname, "../tmp", version);
 var combinedJsFileName = path.resolve(dest, "widget.js");
 
 // define the libraries included in the disconnected package.
