@@ -20,9 +20,22 @@ Library.prototype = {
 		var url = util.format("%s/libraries/%s/%s/library.min.js", this.server, this.id, this.version);
 		_get(url, callback);
 	},
+	/**
+	@param {Function(err, metaJSON)} callback
+	**/
 	getMeta: function(callback){
+		if(typeof callback !== 'function') return;
+
 		var url = util.format("%s/libraries/%s/%s", this.server, this.id, this.version);
-		_get(url, callback);
+		_get(url, function(err, meta){
+			if(!err){
+				if(typeof meta === 'string'){
+					meta = JSON.parse(meta);
+				}
+			}
+
+			callback(err, meta);
+		});
 	},
 	getItem: function(id, callback){
 		var url = util.format("%s/libraries/%s/%s/item/%s", this.server, this.id, this.version, id);
@@ -48,9 +61,7 @@ Library.prototype = {
 Return the body of the http response.
 **/
 var _get=function(url, callback){
-	if(typeof callback !== 'function'){
-		return;
-	}
+	if(typeof callback !== 'function') return;
 
 	request(url, function (err, response, body) {
 		if(err){
