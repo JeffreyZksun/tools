@@ -1,0 +1,24 @@
+{
+  "name": "tools",
+  "version": "0.1.0",
+  "author": "Jeffrey Sun",
+  "description": "tools",
+  "main": "server.js",
+  "engines": {
+    "node": "0.10.x"
+  },
+   "dependencies": {
+  	"step":"0.0.x",
+  	"async": "0.2.x",
+    "request": "2.27.x",
+    "fs-extra":"0.4.x"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+  },
+  "repository": "",
+  "keywords": [
+    "tools"
+  ]
+}
